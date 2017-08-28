@@ -66,7 +66,7 @@
 (set-face-attribute 'default            nil :background "color-233" :foreground "ivory1")
 (set-face-attribute 'fringe             nil :background "gray20")
 (set-face-attribute 'highlight          nil :background "gray16")
-(set-face-attribute 'mode-line          nil :box nil :background "gray26" :foreground "grey60")
+(set-face-attribute 'mode-line          nil :box nil :background "gray26" :foreground "grey80")
 (set-face-attribute 'mode-line-inactive nil :background "gray40")
 (set-face-attribute 'font-lock-function-name-face    nil :foreground "Blue")
 (set-face-attribute 'font-lock-string-face           nil :foreground "VioletRed1")
