@@ -47,7 +47,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (salt-mode flymd markdown-mode web-mode-edit-element))))
+    (json-mode salt-mode flymd markdown-mode web-mode-edit-element))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -66,7 +66,7 @@
 (set-face-attribute 'default            nil :background "color-233" :foreground "ivory1")
 (set-face-attribute 'fringe             nil :background "gray20")
 (set-face-attribute 'highlight          nil :background "gray16")
-(set-face-attribute 'mode-line          nil :box nil :background "gray26" :foreground "grey50")
+(set-face-attribute 'mode-line          nil :box nil :background "gray26" :foreground "grey60")
 (set-face-attribute 'mode-line-inactive nil :background "gray40")
 (set-face-attribute 'font-lock-function-name-face    nil :foreground "Blue")
 (set-face-attribute 'font-lock-string-face           nil :foreground "VioletRed1")
