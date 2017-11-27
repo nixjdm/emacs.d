@@ -3,3 +3,5 @@ syntax: glob
 
 *~
 *.elc
+flymd*
+auto-save-list
