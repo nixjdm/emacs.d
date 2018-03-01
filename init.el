@@ -9,11 +9,14 @@
 ;; Configure web-mode work
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.template?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.js?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.less?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.css?\\'" . web-mode))
 (setq web-mode-engines-alist
       '(("django"    . "\\.html\\'")))
+(setq web-mode-engines-alist
+      '(("django"    . "\\.template\\'")))
 (defun my-web-mode-hook ()
   "Hooks for Web mode."
   (setq web-mode-markup-indent-offset 2)
@@ -33,11 +36,10 @@
 (add-hook 'web-mode-hook  'my-web-mode-hook)
 (add-hook 'css-mode-hook  'my-css-mode-hook)
 (setq column-number-mode t)
+;; Alias to have emacs not balk at uppercase UTF-8 encoding declaration
+(define-coding-system-alias 'UTF-8 'utf-8)
 ;; Delete trailing whitespace automatically
-(add-hook 'local-write-file-hooks
-            (lambda ()
-               (delete-trailing-whitespace)
-               nil))
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 ;; No tabs
 (setq-default indent-tabs-mode nil)
 (custom-set-variables
