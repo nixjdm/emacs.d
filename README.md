@@ -1,6 +1,6 @@
 # README
 
-This is meant to be a drop-in replacement for my `~/.emacs.d` dir, so emacs will pick up my custom settings right off the bat.
+This is meant to be a drop-in replacement for my `~/.emacs.d` dir, so emacs will pick up my custom settings right off the bat. Emacs 24+ required.
 
 So to try it out (and blow away your own custom settings):
 ```

@@ -17,30 +17,49 @@
 (unless package-archive-contents
   (package-refresh-contents))
 (package-refresh-contents)
-; list the packages you want
 (setq package-list
-      '(
-        ;; themes
-        afternoon-theme
-        ample-theme
-        color-theme
-        color-theme-modern
-        cyberpunk-theme
-        monokai-theme
-        ;; everything else
-        flymd
-        json-mode
-        less-css-mode
-        markdown-mode
-        salt-mode
-        web-mode
-        ))
-
+        '(
+          use-package ;; used later to grab themes
+          blacken
+          flymd
+          json-mode
+          less-css-mode
+          markdown-mode
+          salt-mode
+          web-mode
+          )
+        )
+(print 'adsfasd)
+; trust all themes and suppress prompts
+(setq custom-safe-themes t)
 ; install the missing packages
 (dolist (package package-list)
   (unless (package-installed-p package)
     (package-install package)))
 
+;; define themes
+;; (setq themes-list ;; custom themes (not using color-theme)
+;;       '(
+;;         klere-theme
+;;         nimbus-theme
+;;         ))
+
+;; config use-package
+(eval-when-compile
+  (require 'use-package))
+
+(use-package klere-theme)
+(use-package nimbus-theme)
+
+;; theme switcher
+(use-package cycle-themes
+  :ensure t
+  :init (setq cycle-themes-theme-list
+              '(
+                klere-theme
+                nimbus-theme
+                ))
+  :config (cycle-themes-mode))
 
 ;; Configure web-mode
 (require 'web-mode)
@@ -80,6 +99,7 @@
 (setq-default indent-tabs-mode nil)
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
+
 
 ;;;;;;;;;;;;;;;;;;;;;
 ;; fxbois' theme: see http://web-mode.org plus Joe's tweaks
