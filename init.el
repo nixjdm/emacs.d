@@ -17,19 +17,24 @@
 (unless package-archive-contents
   (package-refresh-contents))
 (package-refresh-contents)
+
 (setq package-list
-        '(
-          use-package ;; used later to grab themes
-          blacken
-          flymd
-          json-mode
-          less-css-mode
-          markdown-mode
-          salt-mode
-          web-mode
-          )
+      '(
+        ; themes
+        klere-theme
+        nimbus-theme
+        ; all else
+        blacken
+        cycle-themes
+        flymd
+        json-mode
+        less-css-mode
+        markdown-mode
+        salt-mode
+        web-mode
         )
-(print 'adsfasd)
+      )
+
 ; trust all themes and suppress prompts
 (setq custom-safe-themes t)
 ; install the missing packages
@@ -37,29 +42,16 @@
   (unless (package-installed-p package)
     (package-install package)))
 
-;; define themes
-;; (setq themes-list ;; custom themes (not using color-theme)
-;;       '(
-;;         klere-theme
-;;         nimbus-theme
-;;         ))
-
-;; config use-package
-(eval-when-compile
-  (require 'use-package))
-
-(use-package klere-theme)
-(use-package nimbus-theme)
-
 ;; theme switcher
-(use-package cycle-themes
-  :ensure t
-  :init (setq cycle-themes-theme-list
-              '(
-                klere-theme
-                nimbus-theme
-                ))
-  :config (cycle-themes-mode))
+(setq cycle-themes-theme-list
+      '(klere nimbus))
+
+(require 'cycle-themes)
+(cycle-themes-mode)
+
+;; no source for lib :(
+;; (require 'switch-theme)
+;; (setq switch-theme-list '(klere nimbus))
 
 ;; Configure web-mode
 (require 'web-mode)
