@@ -22,10 +22,11 @@
       '(
         ; themes
         klere-theme
-        nimbus-theme
+;        nimbus-theme
+        monokai-theme
         ; all else
         blacken
-        cycle-themes
+;        cycle-themes
         flymd
         json-mode
         less-css-mode
@@ -43,8 +44,12 @@
     (package-install package)))
 
 ;; theme switcher
-(setq cycle-themes-theme-list
-      '(klere nimbus))
+(load-theme 'klere)
+(load-theme 'monokai)
+(load-theme 'wombat) ; builtin
+
+;(setq cycle-themes-theme-list
+;      '(klere monokai wombat))
 
 (require 'cycle-themes)
 (cycle-themes-mode)
