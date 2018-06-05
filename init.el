@@ -1,3 +1,4 @@
+
 ;; No splash screen please ... jeez
 (setq inhibit-startup-message t)
 
@@ -20,9 +21,10 @@
 
 (setq package-list
       '(
-        ; themes
+                                        ; themes
+        abyss-theme
+        afternoon-theme
         klere-theme
-;        nimbus-theme
         monokai-theme
         ; all else
         blacken
@@ -43,20 +45,28 @@
   (unless (package-installed-p package)
     (package-install package)))
 
-;; theme switcher
-(load-theme 'klere)
-(load-theme 'monokai)
-(load-theme 'wombat) ; builtin
+;; start theme switching
+;; supposed to work but doesn't? Thus the following bit to gte things started.
+;; (setq cycle-themes-theme-list
+;;       '(klere monokai wombat))
 
-;(setq cycle-themes-theme-list
-;      '(klere monokai wombat))
+;; Load all themes and then disable them. Seems hacky but works.
+;; I don't think this should be necessary with cycle-themes, but it seems to be.
+(setq theme-list
+      '(
+        klere
+        monokai
+        wombat
+        )
+      )
+
+(dolist
+    (theme theme-list)
+  (load-theme theme)
+  (disable-theme theme))
 
 (require 'cycle-themes)
 (cycle-themes-mode)
-
-;; no source for lib :(
-;; (require 'switch-theme)
-;; (setq switch-theme-list '(klere nimbus))
 
 ;; Configure web-mode
 (require 'web-mode)
