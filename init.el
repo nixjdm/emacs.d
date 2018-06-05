@@ -1,4 +1,3 @@
-
 ;; No splash screen please ... jeez
 (setq inhibit-startup-message t)
 
@@ -14,21 +13,24 @@
              '("melpa-stable" . "http://melpa-stable.milkbox.net/packages/") t)
 (package-initialize)
 
-; fetch the list of packages available
+;; fetch the list of packages available
 (unless package-archive-contents
   (package-refresh-contents))
 (package-refresh-contents)
 
 (setq package-list
       '(
-                                        ; themes
+        ;; themes
         abyss-theme
         afternoon-theme
+        base16-theme
         klere-theme
         monokai-theme
-        ; all else
+        sublime-themes
+        ;; all else
         blacken
-;        cycle-themes
+        ;; cycle-themes
+        elpy
         flymd
         json-mode
         less-css-mode
@@ -38,32 +40,32 @@
         )
       )
 
-; trust all themes and suppress prompts
+;; trust all themes and suppress prompts
 (setq custom-safe-themes t)
-; install the missing packages
+;; install the missing packages
 (dolist (package package-list)
   (unless (package-installed-p package)
     (package-install package)))
 
-;; start theme switching
-;; supposed to work but doesn't? Thus the following bit to gte things started.
-;; (setq cycle-themes-theme-list
-;;       '(klere monokai wombat))
-
-;; Load all themes and then disable them. Seems hacky but works.
-;; I don't think this should be necessary with cycle-themes, but it seems to be.
 (setq theme-list
       '(
+;;        abyss ; broken colors :(
+        afternoon
+        base16-tomorrow
         klere
         monokai
         wombat
         )
       )
 
+;; cycle-themes needs the themes pre-loaded
+;; disabling all themes after loading so initially only one will be active
+(setq cycle-themes-theme-list '())
 (dolist
-    (theme theme-list)
+    (theme (reverse theme-list))
   (load-theme theme)
-  (disable-theme theme))
+  (disable-theme theme)
+  (add-to-list 'cycle-themes-theme-list theme))
 
 (require 'cycle-themes)
 (cycle-themes-mode)
