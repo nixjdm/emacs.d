@@ -1,3 +1,3 @@
 [submodule "lisp/cycle-themes"]
 	path = lisp/cycle-themes
-	url = https://github.com/toroidal-code/cycle-themes.el
+	url = git@github.com:nixjdm/cycle-themes.el.git
