@@ -35,7 +35,6 @@
         json-mode
         less-css-mode
         markdown-mode
-        salt-mode
         web-mode
         )
       )
