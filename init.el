@@ -29,6 +29,7 @@
         sublime-themes
         ;; all else
         blacken
+	elpy
         ;; cycle-themes
         elpy
         flymd
@@ -66,8 +67,8 @@
   (disable-theme theme)
   (add-to-list 'cycle-themes-theme-list theme))
 
-(require 'cycle-themes)
-(cycle-themes-mode)
+;;(require 'cycle-themes)
+;;(cycle-themes-mode)
 
 ;; Configure web-mode
 (require 'web-mode)
@@ -103,6 +104,11 @@
 (define-coding-system-alias 'UTF-8 'utf-8)
 ;; Delete trailing whitespace automatically
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+;;elpy config
+(elpy-enable)
+(setq elpy-rpc-backend "jedi") ;; use jedi for auto complete
+
 ;; No tabs
 (setq-default indent-tabs-mode nil)
 (setq custom-file "~/.emacs.d/custom.el")

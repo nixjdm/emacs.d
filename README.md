@@ -17,3 +17,14 @@ There is also:
 - Several themes and a theme cycler installed. Use `C-c C-t` to switch themes. They are in a loop and repeat. The theme cycler is a [fork](https://github.com/nixjdm/cycle-themes.el) of [this package](https://github.com/toroidal-code/cycle-themes.el).
 - Web-Mode is installed and preconfiugred.
 - [Blacken](https://github.com/proofit404/blacken) is installed.
+
+
+## elpy Install
+
+```
+pip install jedi flake8 autopep8
+```
+If you are on a Debian based distro, you may need something like this:
+```
+sudo apt-get install python3-distutils python-distutils-extra
+```
