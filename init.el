@@ -30,6 +30,7 @@
         ;; all else
         blacken
 	elpy
+        company-quickhelp
         ;; cycle-themes
         elpy
         flymd
@@ -108,6 +109,10 @@
 ;;elpy config
 (elpy-enable)
 (setq elpy-rpc-backend "jedi") ;; use jedi for auto complete
+(company-quickhelp-mode)
+(setq company-quickhelp-delay 0.01)
+;; company-quickhelp-mode will only work in the gui, read this if you want to fix that:
+;; https://github.com/expez/company-quickhelp/issues/62
 
 ;; No tabs
 (setq-default indent-tabs-mode nil)
