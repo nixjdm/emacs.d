@@ -14,7 +14,7 @@ This has my (m)elpa downloaded packages tracked in git. This is to ensure that I
 
 There is also:
 
-- Several themes and a theme cycler installed. Use `C-c C-t` to switch themes. They are in a loop and repeat. The theme cycler is a [fork](https://github.com/nixjdm/cycle-themes.el) of [this package](https://github.com/toroidal-code/cycle-themes.el).
+- Several themes and a theme cycler installed. Use `C-c C-t` / `M-x cycle-themes` to switch themes. They are in a loop and repeat. The theme cycler is a [fork](https://github.com/nixjdm/cycle-themes.el) of [this package](https://github.com/toroidal-code/cycle-themes.el).
 - Web-Mode is installed and preconfiugred.
 - [Blacken](https://github.com/proofit404/blacken) is installed.
 

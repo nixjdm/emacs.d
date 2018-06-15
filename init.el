@@ -31,8 +31,6 @@
         blacken
 	elpy
         company-quickhelp
-        ;; cycle-themes
-        elpy
         flymd
         json-mode
         less-css-mode
@@ -68,8 +66,8 @@
   (disable-theme theme)
   (add-to-list 'cycle-themes-theme-list theme))
 
-;;(require 'cycle-themes)
-;;(cycle-themes-mode)
+(require 'cycle-themes)
+(cycle-themes-mode)
 
 ;; Configure web-mode
 (require 'web-mode)
