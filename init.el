@@ -13,10 +13,9 @@
              '("melpa-stable" . "http://melpa-stable.milkbox.net/packages/") t)
 (package-initialize)
 
-;; fetch the list of packages available
-(unless package-archive-contents
-  (package-refresh-contents))
-(package-refresh-contents)
+;; To refresh packages, run this.
+;; Not done automatically because it slows start-up time.
+;; M-x package-archive-contents
 
 (setq package-list
       '(
@@ -35,10 +34,12 @@
         json-mode
         less-css-mode
         markdown-mode
+        smooth-scrolling
         web-mode
         )
       )
 
+;;; Themes
 ;; trust all themes and suppress prompts
 (setq custom-safe-themes t)
 ;; install the missing packages
@@ -69,7 +70,8 @@
 (require 'cycle-themes)
 (cycle-themes-mode)
 
-;; Configure web-mode
+;;; Other mode setups
+;; web-mode
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.template?\\'" . web-mode))
@@ -98,13 +100,8 @@
   (setq css-indent-offset 2))
 (add-hook 'web-mode-hook  'my-web-mode-hook)
 (add-hook 'css-mode-hook  'my-css-mode-hook)
-(setq column-number-mode t)
-;; Alias to have emacs not balk at uppercase UTF-8 encoding declaration
-(define-coding-system-alias 'UTF-8 'utf-8)
-;; Delete trailing whitespace automatically
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
-;;elpy config
+;; elpy
 (elpy-enable)
 (setq elpy-rpc-backend "jedi") ;; use jedi for auto complete
 (company-quickhelp-mode)
@@ -112,11 +109,18 @@
 ;; company-quickhelp-mode will only work in the gui, read this if you want to fix that:
 ;; https://github.com/expez/company-quickhelp/issues/62
 
-;; No tabs
-(setq-default indent-tabs-mode nil)
+(require 'smooth-scrolling)
+(smooth-scrolling-mode 1)
+
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
 
+;;; One offs
+(setq-default indent-tabs-mode nil) ; no tabs on indent-region
+(setq column-number-mode t)
+;; Alias to have emacs not balk at uppercase UTF-8 encoding declaration
+(define-coding-system-alias 'UTF-8 'utf-8)
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;;;;;;;;;;;;;;;;;;;;;
 ;; fxbois' theme: see http://web-mode.org plus Joe's tweaks
