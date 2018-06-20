@@ -18,9 +18,13 @@ This has my (m)elpa downloaded packages tracked in git. This is to ensure that I
 There is also:
 
 - Several themes and a theme cycler installed. Use `C-c C-t` / `M-x cycle-themes` to switch themes. They are in a loop and repeat. The theme cycler is a [fork](https://github.com/nixjdm/cycle-themes.el) of [this package](https://github.com/toroidal-code/cycle-themes.el). Note, `C-c C-t` may be repurposed by other modes like elpy
-- Web-Mode is installed and preconfiugred.
 - Elpy is preconfigured for easy use if you follow the below system install instructions.
-- [Blacken](https://github.com/proofit404/blacken) is installed.
+- [Web-Mode](http://web-mode.org/), [json-mode](https://github.com/joshwnj/json-mode), and [less-css-mode](https://github.com/purcell/less-css-mode) (for web-development)
+- [Blacken](https://github.com/proofit404/blacken) (opinionated formater for Python)
+- [flymd](https://github.com/mola-T/flymd) (Markdown renderer for browsers)
+- [markdown-mode](https://jblevins.org/projects/markdown-mode/)
+- [smooth-scrolling](https://github.com/aspiers/smooth-scrolling)
+
 
 
 ## Elpy Install
