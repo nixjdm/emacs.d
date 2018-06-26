@@ -36,6 +36,7 @@
         markdown-mode
         smooth-scrolling
         web-mode
+        js2-mode
         )
       )
 
@@ -121,6 +122,16 @@
 ;; Alias to have emacs not balk at uppercase UTF-8 encoding declaration
 (define-coding-system-alias 'UTF-8 'utf-8)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+;;; java script stuff
+(require 'js2-mode)
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js-mode))
+;;(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+;;; java script stuff
+
+;; Better imenu
+;;(add-hook 'js2-mode-hook #'js2-imenu-extras-mode)
+
 
 ;;;;;;;;;;;;;;;;;;;;;
 ;; fxbois' theme: see http://web-mode.org plus Joe's tweaks
