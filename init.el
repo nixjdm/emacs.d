@@ -37,6 +37,7 @@
         smooth-scrolling
         web-mode
         js2-mode
+        salt-mode
         )
       )
 
@@ -127,10 +128,10 @@
 (require 'js2-mode)
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js-mode))
 ;;(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-;;; java script stuff
-
 ;; Better imenu
 ;;(add-hook 'js2-mode-hook #'js2-imenu-extras-mode)
+;;; java script stuff
+
 
 
 ;;;;;;;;;;;;;;;;;;;;;
