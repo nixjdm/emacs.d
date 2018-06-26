@@ -132,7 +132,11 @@
 ;;(add-hook 'js2-mode-hook #'js2-imenu-extras-mode)
 ;;; java script stuff
 
-
+;;; salt-mode stuff
+(add-hook 'salt-mode-hook
+        (lambda ()
+            (flyspell-mode 1)))
+;;; salt-mode stuff
 
 ;;;;;;;;;;;;;;;;;;;;;
 ;; fxbois' theme: see http://web-mode.org plus Joe's tweaks
