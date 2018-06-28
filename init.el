@@ -114,6 +114,7 @@
 (require 'elpy)
 (elpy-enable)
 (setq elpy-rpc-backend "jedi") ;; use jedi for auto complete
+(add-hook 'elpy-mode-hook (lambda () (highlight-indentation-mode -1)))
 (company-quickhelp-mode)
 (setq company-quickhelp-delay 0.01)
 ;; company-quickhelp-mode will only work in the gui, read this if you want to fix that:
