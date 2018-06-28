@@ -2,8 +2,7 @@
 (setq inhibit-startup-message t)
 
 ;; Set paths to dependencies
-(let ((default-directory
-        (expand-file-name "~/.emacs.d/lisp/")))
+(let ((default-directory "~/.emacs.d/lisp/"))
   (normal-top-level-add-subdirs-to-load-path))
 
 (require 'package)
@@ -12,11 +11,11 @@
 (add-to-list 'package-archives
              '("melpa-stable" . "http://melpa-stable.milkbox.net/packages/") t)
 (package-initialize)
+;(package-initialize)
 
 ;; To refresh packages, run this.
 ;; Not done automatically because it slows start-up time.
-;; M-x package-archive-contents
-
+;; M-x package-refresh-contents
 (setq package-list
       '(
         ;; themes
@@ -26,18 +25,20 @@
         klere-theme
         monokai-theme
         sublime-themes
+        yoshi-theme
+        waher-theme
         ;; all else
-        blacken
 	elpy
+        blacken
         company-quickhelp
         flymd
+        js2-mode
         json-mode
         less-css-mode
         markdown-mode
+        salt-mode
         smooth-scrolling
         web-mode
-        js2-mode
-        salt-mode
         )
       )
 
@@ -51,12 +52,18 @@
 
 (setq theme-list
       '(
-;;        abyss ; broken colors :(
+        ;; abyss ; broken colors :(
+        monokai
         afternoon
         base16-tomorrow
         klere
-        monokai
+        ;; monokai ; default, copied to top of list.
         wombat
+        ;; zonokai-blue
+        ;; zonokai-red
+        yoshi
+        waher
+;        sunburst
         )
       )
 
@@ -104,6 +111,7 @@
 (add-hook 'css-mode-hook  'my-css-mode-hook)
 
 ;; elpy
+(require 'elpy)
 (elpy-enable)
 (setq elpy-rpc-backend "jedi") ;; use jedi for auto complete
 (company-quickhelp-mode)

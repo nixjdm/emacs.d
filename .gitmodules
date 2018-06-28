@@ -1,3 +1,9 @@
 [submodule "lisp/cycle-themes"]
 	path = lisp/cycle-themes
 	url = git@github.com:nixjdm/cycle-themes.el.git
+[submodule "lisp/themes/Emacs-Sunburst-Color-Theme"]
+	path = lisp/themes/Emacs-Sunburst-Color-Theme
+	url = https://github.com/neomantic/Emacs-Sunburst-Color-Theme.git
+[submodule "lisp/themes/zonokai-emacs"]
+	path = lisp/themes/zonokai-emacs
+	url = https://github.com/ZehCnaS34/zonokai-emacs.git

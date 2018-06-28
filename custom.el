@@ -28,8 +28,7 @@
      ("#3C3D37" . 100))))
  '(magit-diff-use-overlays nil)
  '(package-selected-packages
-   (quote
-    (smooth-scrolling smooth-scrolling-mode company-quickhelp themes-list nimbus-theme klere-theme blacken cycle-themes web-mode salt-mode markdown-mode json-mode flymd monokai-theme cyberpunk-theme color-theme-modern color-theme ample-theme afternoon-theme)))
+   '(yoshi-theme smooth-scrolling smooth-scrolling-mode company-quickhelp themes-list nimbus-theme klere-theme blacken cycle-themes web-mode salt-mode markdown-mode json-mode flymd monokai-theme cyberpunk-theme color-theme-modern color-theme ample-theme afternoon-theme))
  '(pos-tip-background-color "#FFFACE")
  '(pos-tip-foreground-color "#272822")
  '(vc-annotate-background nil)
