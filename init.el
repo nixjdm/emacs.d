@@ -10,8 +10,6 @@
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (add-to-list 'package-archives
              '("melpa-stable" . "http://melpa-stable.milkbox.net/packages/") t)
-(package-initialize)
-;(package-initialize)
 
 ;; To refresh packages, run this.
 ;; Not done automatically because it slows start-up time.

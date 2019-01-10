@@ -5,7 +5,7 @@
 ;; Author: Ben Hayden <hayden767@gmail.com>
 ;; Maintainer: Glynn Forrest <me@glynnforrest.com>
 ;; URL: https://github.com/glynnforrest/salt-mode
-;; Package-Version: 20180118.1754
+;; Package-Version: 20181225.1157
 ;; Keywords: languages
 ;; Version: 0.1
 ;; Package-Requires: ((emacs "24.4") (yaml-mode "0.0.12") (mmm-mode "0.5.4") (mmm-jinja2 "0.1"))
@@ -436,8 +436,10 @@ to use."
   "Keys with special meaning at the top level of state files.")
 
 (defconst salt-mode-requisite-types
-  '("require" "watch" "prereq" "use" "onchanges" "onfail"
-    "require_in" "watch_in" "prereq_in" "use_in" "onchanges_in" "onfail_in")
+  '("listen" "listen_in" "onchanges" "onchanges_any" "onchanges_in"
+    "onfail" "onfail_any" "onfail_in" "prereq" "prereq_in"
+    "require" "require_any" "require_in" "use" "use_in"
+    "watch" "watch_any" "watch_in")
   "Keys that identify requisite relations between states.
 
 More about requisites can be found in the Salt documentation,
@@ -451,9 +453,39 @@ https://docs.saltstack.com/en/latest/ref/states/requisites.html")
 More information about minion targeting can be found at URL
 https://docs.saltstack.com/en/latest/ref/states/top.html")
 
+(defconst salt-mode-state-keywords
+  '("check_cmd" "failhard" "fire_event" "fun" "name" "names"
+    "onfail_stop" "onlyif" "order" "parallel" "reload_grains"
+    "reload_modules" "reload_pillar" "retry" "runas"
+    "runas_password" "saltenv" "state" "unless")
+  "Global state keywords.
+
+These keywords are present in all state modules. Keywords specific to the state module, such as 'source' in file.managed, will be highlighted differently.
+
+The actual list of keywords can be found at URL (see STATE_RUNTIME_KEYWORDS)
+https://github.com/saltstack/salt/blob/develop/salt/state.py")
+
+(defconst salt-mode-orch-keywords
+  '("arg" "fail_function" "fail_with_changes" "highstate"
+    "kwarg" "sls" "succeed_with_changes" "tgt" "tgt_type")
+  "Orchestrate keywords.
+
+The actual list of orchestrate keywords can be found at URL
+https://docs.saltstack.com/en/latest/topics/orchestrate/orchestrate_runner.html")
+
 (defface salt-mode-keyword-face
   '((t (:inherit font-lock-keyword-face)))
   "Face for special Salt highstate keywords (e.g. `include')."
+  :group 'salt)
+
+(defface salt-mode-state-keyword-face
+  '((t (:inherit font-lock-builtin-face)))
+  "Face for global Salt state keywords (e.g. `check_cmd', `retry')."
+  :group 'salt)
+
+(defface salt-mode-orch-keyword-face
+  '((t (:inherit font-lock-builtin-face)))
+  "Face for Salt orchestrate keywords (e.g. `sls', `tgt')."
   :group 'salt)
 
 (defface salt-mode-requisite-face
@@ -491,6 +523,10 @@ https://docs.saltstack.com/en/latest/ref/states/top.html")
      (1 'salt-mode-keyword-face))
     (,(format "^ +- *%s:" (regexp-opt salt-mode-requisite-types t))
      (1 'salt-mode-requisite-face))
+    (,(format "^ +- *%s:" (regexp-opt salt-mode-state-keywords t))
+     (1 'salt-mode-state-keyword-face))
+    (,(format "^ +- *%s:" (regexp-opt salt-mode-orch-keywords t))
+     (1 'salt-mode-orch-keyword-face))
     ("^\\([^ \"':#\n][^\"':#\n]*\\):"
      (1 'salt-mode-state-id-face))
     ("^ +\\([a-z][a-z0-9_]*\\.[a-z][a-z0-9_]*\\):?"
@@ -524,15 +560,32 @@ https://docs.saltstack.com/en/latest/ref/states/top.html")
     ;; (define-key map (kbd "C-M-p") 'salt-mode-backward-state-id)
     map) "Keymap for `salt-mode'.")
 
+(defvar-local salt-mode--file-type 'salt
+  "The type of SLS file the buffer is currently visiting, either 'salt or 'top.")
+
+(defun salt-mode--detect-file-type ()
+  "Suggest the value of salt-mode--file-type according to the current file."
+  (if (null buffer-file-name) 'salt
+    (if (equal (file-name-nondirectory buffer-file-name) "top.sls")
+        'top 'salt)))
+
+(defun salt-mode-set-file-type (type)
+  "Set the file type of the current file and refresh font locking."
+  (interactive (list (intern (completing-read "Set file type: " '("salt" "top")))))
+  (if (not (member type '(salt top)))
+      (error (format "File type must be 'salt or 'top, %s given." type)))
+  (setq salt-mode--file-type type)
+  (salt-mode--set-keywords))
+
 (defun salt-mode--set-keywords ()
-  "Set keywords appropriate for the current SLS file type."
+  "Set keywords appropriate for the value of salt-mode--file-type."
   (font-lock-remove-keywords nil salt-mode-top-file-keywords)
   (font-lock-remove-keywords nil salt-mode-keywords)
   (font-lock-add-keywords
    nil
-   (cond ((null buffer-file-name)
+   (cond ((equal salt-mode--file-type 'salt)
           salt-mode-keywords)
-         ((equal (file-name-nondirectory buffer-file-name) "top.sls")
+         ((equal salt-mode--file-type 'top)
           salt-mode-top-file-keywords)
          (t salt-mode-keywords)))
   (if (fboundp 'font-lock-flush)
@@ -558,8 +611,7 @@ required.)"
 
   (setq-local yaml-indent-offset salt-mode-indent-level)
   (setq-local eldoc-documentation-function #'salt-mode--eldoc)
-  (salt-mode--set-keywords)
-  (add-hook 'buffer-list-update-hook #'salt-mode--set-keywords nil t)
+  (salt-mode-set-file-type (salt-mode--detect-file-type))
   (unless mmm-in-temp-buffer
     (salt-mode-refresh-data t)))
 
