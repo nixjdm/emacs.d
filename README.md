@@ -1,6 +1,6 @@
 # README
 
-This is meant to be a drop-in replacement for my `~/.emacs.d` dir, so emacs will pick up my custom settings right off the bat. Emacs 24+ required, at a minimum, maybe 25.2+, I'm not quite sure. I'm using the current snapshot which is 27.
+This is meant to be a drop-in replacement for my `~/.emacs.d` dir, so emacs will pick up my custom settings right off the bat. Emacs 24+ required, at a minimum, maybe 25.2+, I'm not quite sure. I'm using the current snapshot which is 27+.
 
 So to try it out (and blow away your own custom settings):
 ## NOTE THE RECURSIVE FLAG
@@ -9,15 +9,13 @@ rm -rf ~/.emacs.d
 git clone --recursive git@github.com:nixjdm/emacs.d.git ~/.emacs.d
 ```
 
-N.B. You may get some errors the first time this is ran (when you open a file), e.g. from flymd. If these *don't* go away on a second run, please file an issue.
-
 ## What's in here
 
-This has my (m)elpa downloaded packages tracked in git. This is to ensure that I can always just use a working copy if something ever happens to them, melpa, or my internet connection. I also have code that will read a list of packages and pull them in if they aren't there for easy updating. This also doubles as a easy to read list of what's contained here, in init.el.
+This will automatically load package repositories and use them to ensure the packages listed in the init.el are installed. It will install them in the elpa/ dir if they aren't already there. A few submodules are included for things not in (m)elpa / marmalade.
 
 There is also:
 
-- Several themes and a theme cycler installed. Use `C-c C-t` / `M-x cycle-themes` to switch themes. They are in a loop and repeat. The theme cycler is a [fork](https://github.com/nixjdm/cycle-themes.el) of [this package](https://github.com/toroidal-code/cycle-themes.el). Note, `C-c C-t` may be repurposed by other modes like elpy
+- Several themes and a theme cycler installed. Use `C-c C-t` / `M-x cycle-themes` to switch themes. They are in a loop and repeat. The theme cycler is a [fork](https://github.com/nixjdm/cycle-themes.el) of [this package](https://github.com/toroidal-code/cycle-themes.el). Note, `C-c C-t` may be repurposed by other modes like elpy, so in that case switch modes, or call `M-x cycle-themes`.
 - Elpy is preconfigured for easy use if you follow the below system install instructions.
 - [Web-Mode](http://web-mode.org/), [json-mode](https://github.com/joshwnj/json-mode), and [less-css-mode](https://github.com/purcell/less-css-mode) (for web-development)
 - [Blacken](https://github.com/proofit404/blacken) (opinionated formater for Python)

@@ -1,15 +1,27 @@
-;; No splash screen please ... jeez
-(setq inhibit-startup-message t)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; initial package setup
+(require 'package)
+(mapc (lambda(p) (push p package-archives))
+      '(("marmalade" . "http://marmalade-repo.org/packages/")
+        ("melpa" . "http://melpa.milkbox.net/packages/")
+	("melpa-stable" . "http://melpa-stable.milkbox.net/packages/")
+	("gnu" . "http://elpa.gnu.org/packages/")))
+(package-initialize)
+
+;; Install 'use-package' if necessary
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+(package-install 'use-package))
+;; Enable use-package
+(eval-when-compile
+  (require 'use-package))
+;(require 'diminish)                ;; if you use :diminish
+(require 'bind-key)                ;; if you use any :bind variant
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Set paths to dependencies
 (let ((default-directory "~/.emacs.d/lisp/"))
   (normal-top-level-add-subdirs-to-load-path))
-
-(require 'package)
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/") t)
-(add-to-list 'package-archives
-             '("melpa-stable" . "http://melpa-stable.milkbox.net/packages/") t)
 
 ;; To refresh packages, run this.
 ;; Not done automatically because it slows start-up time.

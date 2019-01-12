@@ -6,3 +6,5 @@ syntax: glob
 *.elc
 flymd*
 auto-save-list
+elpa
+network-security.data
