@@ -2,9 +2,9 @@
 ;; initial package setup
 (require 'package)
 (mapc (lambda(p) (push p package-archives))
-      '(("melpa" . "http://melpa.milkbox.net/packages/")
-	("melpa-stable" . "http://melpa-stable.milkbox.net/packages/")
-	("gnu" . "http://elpa.gnu.org/packages/")))
+  '(("melpa" . "http://melpa.milkbox.net/packages/")
+    ("melpa-stable" . "http://melpa-stable.milkbox.net/packages/")
+    ("gnu" . "http://elpa.gnu.org/packages/")))
 (package-initialize)
 
 ;; Install 'use-package' if necessary
@@ -26,30 +26,30 @@
 ;; Not done automatically because it slows start-up time.
 ;; M-x package-refresh-contents
 (setq package-list
-      '(
-        ;; themes
-        abyss-theme
-        afternoon-theme
-        base16-theme
-        klere-theme
-        monokai-theme
-        sublime-themes
-        yoshi-theme
-        waher-theme
-        ;; all else
-	elpy
-        blacken
-        company-quickhelp
-        flymd
-        js2-mode
-        json-mode
-        less-css-mode
-        markdown-mode
-        salt-mode
-        smooth-scrolling
-        web-mode
-        )
-      )
+  '(
+    ;; themes
+    abyss-theme
+    afternoon-theme
+    base16-theme
+    klere-theme
+    monokai-theme
+    sublime-themes
+    yoshi-theme
+    waher-theme
+    ;; all else
+    elpy
+    blacken
+    company-quickhelp
+    flymd
+    js2-mode
+    json-mode
+    less-css-mode
+    markdown-mode
+    salt-mode
+    smooth-scrolling
+    web-mode
+    )
+  )
 
 ;;; Themes
 ;; trust all themes and suppress prompts
@@ -60,27 +60,27 @@
     (package-install package)))
 
 (setq theme-list
-      '(
-        ;; abyss ; broken colors :(
-        monokai
-        afternoon
-        base16-tomorrow
-        klere
-        ;; monokai ; default, copied to top of list.
-        wombat
-        ;; zonokai-blue
-        ;; zonokai-red
-        yoshi
-        waher
-;        sunburst
-        )
-      )
+  '(
+    ;; abyss ; broken colors :(
+    monokai
+    afternoon
+    base16-tomorrow
+    klere
+    ;; monokai ; default, copied to top of list.
+    wombat
+    ;; zonokai-blue
+    ;; zonokai-red
+    yoshi
+    waher
+    ;; sunburst
+    )
+  )
 
 ;; cycle-themes needs the themes pre-loaded
 ;; disabling all themes after loading so initially only one will be active
 (setq cycle-themes-theme-list '())
 (dolist
-    (theme (reverse theme-list))
+  (theme (reverse theme-list))
   (load-theme theme)
   (disable-theme theme)
   (add-to-list 'cycle-themes-theme-list theme))
@@ -97,9 +97,9 @@
 (add-to-list 'auto-mode-alist '("\\.less?\\'" . less-css-mode))
 (add-to-list 'auto-mode-alist '("\\.css?\\'" . css-mode))
 (setq web-mode-engines-alist
-      '(("django"    . "\\.html\\'")))
+  '(("django" . "\\.html\\'")))
 (setq web-mode-engines-alist
-      '(("django"    . "\\.template\\'")))
+  '(("django" . "\\.template\\'")))
 (defun my-web-mode-hook ()
   "Hooks for Web mode."
   (setq web-mode-markup-indent-offset 2)
@@ -116,8 +116,8 @@
 (defun my-css-mode-hook ()
   "Hooks for css-mode, and inherited by less-css-mode"
   (setq css-indent-offset 2))
-(add-hook 'web-mode-hook  'my-web-mode-hook)
-(add-hook 'css-mode-hook  'my-css-mode-hook)
+(add-hook 'web-mode-hook 'my-web-mode-hook)
+(add-hook 'css-mode-hook 'my-css-mode-hook)
 
 ;; elpy
 (require 'elpy)
@@ -141,19 +141,19 @@
 ;; Alias to have emacs not balk at uppercase UTF-8 encoding declaration
 (define-coding-system-alias 'UTF-8 'utf-8)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+(setq backup-directory-alist `(("." . "~/.emacs.d/backups"))) ;; Set backups dir
 
-;;; java script stuff
+;;; javascript stuff
 (require 'js2-mode)
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js-mode))
-;;(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 ;; Better imenu
 ;;(add-hook 'js2-mode-hook #'js2-imenu-extras-mode)
 ;;; java script stuff
 
 ;;; salt-mode stuff
 (add-hook 'salt-mode-hook
-        (lambda ()
-            (flyspell-mode 1)))
+  (lambda ()
+    (flyspell-mode 1)))
 ;;; salt-mode stuff
 
 ;;;;;;;;;;;;;;;;;;;;;
