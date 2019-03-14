@@ -27,9 +27,14 @@ There is also:
 
 ## Elpy Install
 
+In you base miniconda env:
+
 ```
-pip install jedi flake8 autopep8
+pip install -U jedi flake8 autopep8 black rope yapf
 ```
+
+I use Miniconda. Since that's installed, my base Python path is `~/miniconda3`, and that is where emacs is told to look for these packages. If something isn't working, emacs may be looking in the wrong virtualenv for these packages. Check `M-x elpy-config`. Install these packages in the appropriate env, or change the path emacs is looking in.
+
 If you are on a Debian based distro, you may need something like this:
 ```
 sudo apt-get install python3-distutils python-distutils-extra
