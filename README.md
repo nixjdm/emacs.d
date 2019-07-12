@@ -27,9 +27,8 @@ There is also:
 
 ## Elpy Install
 
-I use Miniconda. Since that's installed, my base Python path is `~/miniconda3`, and that is where emacs is told to look for these packages. If something isn't working, emacs may be looking in the wrong virtualenv for these packages. Check `M-x elpy-config`. Install these packages in the appropriate env, or change the path emacs is looking in.
+Check `M-x elpy-config`. Install these packages in the appropriate env, or change the path emacs is looking in.
 
-In your base miniconda env:
 
 ```
 pip install -U jedi flake8 autopep8 black rope yapf
@@ -40,6 +39,24 @@ If you are on a Debian based distro, you may need something like this:
 sudo apt-get install python3-distutils python-distutils-extra
 ```
 
+## Noteworthy Key-bindings and functions
+
+Unprefixed lines are functions runable with `M-x`.
+
+- C-c C-t (cycle-themes) - Note: clobbered by elpy-test in Elpy mode.
+- blacken-buffer
+- cycle-themes
+- flymd-flyit - Render markdown into a browser
+- sort-lines-nocase
+
+### Elpy
+
+- C-c C-o (elpy-occur-definitions)
+- M-. (elpy-goto-definition)
+- M-* (pop-tag-mark)
+- elpy-config
+
+
 ## Contributions
 
-PRs and Issues welcome! You can even get me to add in themes (mostly dark ones). However, this is meant to be my quick install, so I win any bike shedding arguements. Please feel free to fork if you want to use this but tweak anything that's not my taste.
+PRs and Issues welcome! You can even get me to add in themes (mostly dark ones). However, this is meant to be my quick install, so I win any bike shedding arguements. Please feel free to fork or use whatever snippet that you want.
