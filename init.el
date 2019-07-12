@@ -130,6 +130,11 @@
 ;; company-quickhelp-mode will only work in the gui, read this if you want to fix that:
 ;; https://github.com/expez/company-quickhelp/issues/62
 
+(defun sort-lines-nocase ()
+  (interactive)
+  (let ((sort-fold-case t))
+    (call-interactively 'sort-lines)))
+
 (require 'smooth-scrolling)
 (smooth-scrolling-mode 1)
 
