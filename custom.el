@@ -24,7 +24,7 @@
  '(magit-diff-use-overlays nil)
  '(org-fontify-whole-heading-line t)
  '(package-selected-packages
-   '(web-mode smooth-scrolling salt-mode markdown-mode less-css-mode json-mode js2-mode flymd company-quickhelp blacken elpy waher-theme yoshi-theme sublime-themes monokai-theme klere-theme base16-theme afternoon-theme abyss-theme use-package))
+   '(smooth-scroll web-mode salt-mode markdown-mode less-css-mode json-mode js2-mode flymd company-quickhelp blacken elpy waher-theme yoshi-theme sublime-themes monokai-theme klere-theme base16-theme afternoon-theme abyss-theme use-package))
  '(pos-tip-background-color "#FFFACE")
  '(pos-tip-foreground-color "#272822")
  '(vc-annotate-background nil)

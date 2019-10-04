@@ -46,7 +46,7 @@
     less-css-mode
     markdown-mode
     salt-mode
-    smooth-scrolling
+    smooth-scroll
     web-mode
     )
   )
@@ -134,8 +134,9 @@
   (let ((sort-fold-case t))
     (call-interactively 'sort-lines)))
 
-(require 'smooth-scrolling)
-(smooth-scrolling-mode 1)
+(require 'smooth-scroll)
+(smooth-scroll-mode 1)
+(setq smooth-scroll/vscroll-step-size 5)
 
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
