@@ -11,6 +11,7 @@
    [unspecified "#ffffff" "#c82829" "#718c00" "#eab700" "#4271ae" "#8959a8" "#4271ae" "#4d4d4c"])
  '(compilation-message-face 'default)
  '(fci-rule-color "#3C3D37")
+ '(flycheck-posframe-border-width 5)
  '(highlight-changes-colors '("#FD5FF0" "#AE81FF"))
  '(highlight-tail-colors
    '(("#3C3D37" . 0)
@@ -21,6 +22,10 @@
      ("#A75B00" . 70)
      ("#F309DF" . 85)
      ("#3C3D37" . 100)))
+ '(hydra-posframe-show-params
+   '(:poshandler posframe-poshandler-frame-bottom-center :internal-border-width 15 :internal-border-color "#222222" :background-color "#222222"))
+ '(ivy-posframe-border-width 15)
+ '(ivy-posframe-style 'frame-bottom-window-center)
  '(magit-diff-use-overlays nil)
  '(org-fontify-whole-heading-line t)
  '(package-selected-packages

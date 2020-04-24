@@ -122,6 +122,11 @@
 ;; elpy
 (require 'elpy)
 (elpy-enable)
+;; https://emacs.stackexchange.com/a/16638
+(setq elpy-rpc-python-command "python3")
+(setenv "IPY_TEST_SIMPLE_PROMPT" "1")
+(setq python-shell-interpreter "ipython3"
+      python-shell-interpreter-args "-i")
 (setq elpy-rpc-backend "jedi") ;; use jedi for auto complete
 (add-hook 'elpy-mode-hook (lambda () (highlight-indentation-mode -1)))
 (company-quickhelp-mode)
