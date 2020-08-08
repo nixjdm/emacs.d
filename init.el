@@ -2,9 +2,9 @@
 ;; initial package setup
 (require 'package)
 (mapc (lambda(p) (push p package-archives))
-  '(("melpa" . "http://melpa.milkbox.net/packages/")
-    ("melpa-stable" . "http://melpa-stable.milkbox.net/packages/")
-    ("gnu" . "http://elpa.gnu.org/packages/")))
+  '(("melpa" . "https://melpa.org/packages/")
+    ("melpa-stable" . "https://stable.melpa.org/packages/")
+    ("gnu" . "https://elpa.gnu.org/packages/")))
 (package-initialize)
 
 ;; Install 'use-package' if necessary
